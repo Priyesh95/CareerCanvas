@@ -1,0 +1,34 @@
+.preview-page {
+  min-height: 60vh;
+  padding: var(--spacing-4xl) 0;
+}
+
+.preview-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.preview-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.preview-subtitle {
+  font-size: 1.125rem;
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.preview-placeholder {
+  padding: var(--spacing-4xl);
+  border: 2px solid var(--gray-300);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+
+.preview-placeholder p {
+  margin: var(--spacing-sm) 0;
+  color: var(--gray-600);
+}

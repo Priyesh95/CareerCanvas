@@ -1,0 +1,15 @@
+.container-component {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.container-component.container-wide {
+  max-width: 1400px;
+}
+
+@media (max-width: 768px) {
+  .container-component {
+    padding: 0 var(--spacing-md);
+  }
+}

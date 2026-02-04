@@ -1,0 +1,33 @@
+.upload-page {
+  min-height: 60vh;
+  padding: var(--spacing-4xl) 0;
+}
+
+.upload-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.upload-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.upload-subtitle {
+  font-size: 1.125rem;
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.upload-placeholder {
+  padding: var(--spacing-4xl);
+  border: 2px dashed var(--gray-300);
+  border-radius: var(--radius-lg);
+  background: var(--gray-100);
+}
+
+.upload-placeholder p {
+  margin: var(--spacing-sm) 0;
+  color: var(--gray-600);
+}
