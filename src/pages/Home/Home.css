@@ -140,7 +140,7 @@
 
 /* Center the Spark template (third card) */
 .template-card:nth-child(3) .template-preview-image {
-  object-position: top center;
+  object-position: top left;
 }
 
 .template-placeholder {

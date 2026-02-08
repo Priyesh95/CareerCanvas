@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Nebula.css'
 
-function Nebula() {
+function Nebula({ data }) {
   const [activeSection, setActiveSection] = useState('about')
 
   useEffect(() => {
@@ -30,7 +30,8 @@ function Nebula() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const portfolioData = {
+  // Default sample data for standalone viewing
+  const defaultData = {
     name: "Alex Chen",
     title: "Full Stack Software Engineer",
     email: "alex.chen@email.com",
@@ -122,6 +123,24 @@ function Nebula() {
       }
     ]
   }
+
+  // Use provided data or fall back to default
+  // Map API data structure to template format
+  const portfolioData = data ? {
+    name: data.personal?.name || defaultData.name,
+    title: data.personal?.title || defaultData.title,
+    email: data.personal?.email || defaultData.email,
+    phone: data.personal?.phone || defaultData.phone,
+    location: data.personal?.location || defaultData.location,
+    linkedin: data.personal?.linkedin || defaultData.linkedin,
+    github: data.personal?.github || defaultData.github,
+    website: data.personal?.website || defaultData.website,
+    about: data.about || defaultData.about,
+    skills: data.skills || defaultData.skills,
+    experience: data.experience || defaultData.experience,
+    projects: data.projects || defaultData.projects,
+    education: data.education || defaultData.education
+  } : defaultData
 
   return (
     <div className="nebula-template">
