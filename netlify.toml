@@ -1,8 +1,8 @@
 # Netlify Configuration for CareerCanvas
 
 [build]
-  # Build command - explicitly install with dev deps
-  command = "npm ci --include=dev && npm run build"
+  # Build command - vite is now in dependencies, so simple install works
+  command = "npm install && npm run build"
 
   # Directory with the static files
   publish = "dist"
