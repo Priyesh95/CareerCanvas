@@ -16,7 +16,7 @@ function Header({ selectedTemplate, onTemplateChange }) {
   }
 
   return (
-    <header className="header">
+    <header className={`header ${isPreviewPage ? 'header-preview' : ''}`}>
       <div className="container header-content">
         <Link to="/" className="logo" onClick={closeMobileMenu}>
           <span className="logo-text">Career</span>

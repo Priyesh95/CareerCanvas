@@ -9,6 +9,11 @@
   background: rgba(255, 255, 255, 0.95);
 }
 
+/* Non-sticky header on preview page */
+.header-preview {
+  position: relative;
+}
+
 .header-content {
   display: flex;
   justify-content: space-between;
