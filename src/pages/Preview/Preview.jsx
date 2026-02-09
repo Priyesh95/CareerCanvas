@@ -4,6 +4,7 @@ import Aurora from '../../templates/Aurora/Aurora';
 import Nebula from '../../templates/Nebula/Nebula';
 import Spark from '../../templates/Spark/Spark';
 import EnhancementModal from '../../components/EnhancementModal/EnhancementModal';
+import { downloadHTML } from '../../utils/export';
 import './Preview.css';
 
 function Preview({ selectedTemplate, onTemplateChange }) {
@@ -56,8 +57,16 @@ function Preview({ selectedTemplate, onTemplateChange }) {
   ];
 
   const handleDownload = () => {
-    // TODO: Implement download functionality
-    alert('Download functionality coming soon!');
+    if (!parsedData) {
+      alert('No portfolio data available. Please upload a resume first.');
+      return;
+    }
+
+    const success = downloadHTML(selectedTemplate, parsedData);
+
+    if (!success) {
+      alert('Download failed. Please try again.');
+    }
   };
 
   const handleStartOver = () => {

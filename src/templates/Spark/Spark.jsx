@@ -3,6 +3,7 @@ import './Spark.css'
 
 function Spark({ data }) {
   const [activeSection, setActiveSection] = useState('about')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -155,24 +156,41 @@ function Spark({ data }) {
               {portfolioData.name}
             </span>
           </div>
-          <div className="spark-nav-links">
-            <a href="#about" className={`spark-nav-link ${activeSection === 'about' ? 'active' : ''}`}>
+
+          {/* Hamburger Button */}
+          <button
+            className={`spark-hamburger ${mobileMenuOpen ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="spark-hamburger-line"></span>
+            <span className="spark-hamburger-line"></span>
+            <span className="spark-hamburger-line"></span>
+          </button>
+
+          <div className={`spark-nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            <a href="#about" className={`spark-nav-link ${activeSection === 'about' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               About
             </a>
-            <a href="#skills" className={`spark-nav-link ${activeSection === 'skills' ? 'active' : ''}`}>
+            <a href="#skills" className={`spark-nav-link ${activeSection === 'skills' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Skills
             </a>
-            <a href="#experience" className={`spark-nav-link ${activeSection === 'experience' ? 'active' : ''}`}>
+            <a href="#experience" className={`spark-nav-link ${activeSection === 'experience' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Experience
             </a>
-            <a href="#projects" className={`spark-nav-link ${activeSection === 'projects' ? 'active' : ''}`}>
+            <a href="#projects" className={`spark-nav-link ${activeSection === 'projects' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Projects
             </a>
-            <a href="#education" className={`spark-nav-link ${activeSection === 'education' ? 'active' : ''}`}>
+            <a href="#education" className={`spark-nav-link ${activeSection === 'education' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>
               Education
             </a>
           </div>
         </div>
+
+        {/* Mobile Overlay */}
+        {mobileMenuOpen && (
+          <div className="spark-mobile-overlay" onClick={() => setMobileMenuOpen(false)}></div>
+        )}
       </nav>
 
       {/* Hero Header */}

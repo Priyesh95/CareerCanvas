@@ -3,6 +3,7 @@ import './Nebula.css'
 
 function Nebula({ data }) {
   const [activeSection, setActiveSection] = useState('about')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -148,29 +149,46 @@ function Nebula({ data }) {
       <nav className="nebula-nav">
         <div className="nebula-nav-content">
           <span className="nebula-nav-name">{portfolioData.name}</span>
-          <div className="nebula-nav-items">
-            <a href="#about" className={`nebula-nav-item ${activeSection === 'about' ? 'active' : ''}`} title="About">
+
+          {/* Hamburger Button */}
+          <button
+            className={`nebula-hamburger ${mobileMenuOpen ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="nebula-hamburger-line"></span>
+            <span className="nebula-hamburger-line"></span>
+            <span className="nebula-hamburger-line"></span>
+          </button>
+
+          <div className={`nebula-nav-items ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            <a href="#about" className={`nebula-nav-item ${activeSection === 'about' ? 'active' : ''}`} title="About" onClick={() => setMobileMenuOpen(false)}>
               <span className="nebula-nav-bullet"></span>
               <span className="nebula-nav-label">About</span>
             </a>
-            <a href="#skills" className={`nebula-nav-item ${activeSection === 'skills' ? 'active' : ''}`} title="Skills">
+            <a href="#skills" className={`nebula-nav-item ${activeSection === 'skills' ? 'active' : ''}`} title="Skills" onClick={() => setMobileMenuOpen(false)}>
               <span className="nebula-nav-bullet"></span>
               <span className="nebula-nav-label">Skills</span>
             </a>
-            <a href="#experience" className={`nebula-nav-item ${activeSection === 'experience' ? 'active' : ''}`} title="Experience">
+            <a href="#experience" className={`nebula-nav-item ${activeSection === 'experience' ? 'active' : ''}`} title="Experience" onClick={() => setMobileMenuOpen(false)}>
               <span className="nebula-nav-bullet"></span>
               <span className="nebula-nav-label">Experience</span>
             </a>
-            <a href="#projects" className={`nebula-nav-item ${activeSection === 'projects' ? 'active' : ''}`} title="Projects">
+            <a href="#projects" className={`nebula-nav-item ${activeSection === 'projects' ? 'active' : ''}`} title="Projects" onClick={() => setMobileMenuOpen(false)}>
               <span className="nebula-nav-bullet"></span>
               <span className="nebula-nav-label">Projects</span>
             </a>
-            <a href="#education" className={`nebula-nav-item ${activeSection === 'education' ? 'active' : ''}`} title="Education">
+            <a href="#education" className={`nebula-nav-item ${activeSection === 'education' ? 'active' : ''}`} title="Education" onClick={() => setMobileMenuOpen(false)}>
               <span className="nebula-nav-bullet"></span>
               <span className="nebula-nav-label">Education</span>
             </a>
           </div>
         </div>
+
+        {/* Mobile Overlay */}
+        {mobileMenuOpen && (
+          <div className="nebula-mobile-overlay" onClick={() => setMobileMenuOpen(false)}></div>
+        )}
       </nav>
 
       {/* Header Section */}

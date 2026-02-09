@@ -6,13 +6,15 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: #e2e8f0;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Sticky Horizontal Navigation */
 .nebula-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 50;
   background: rgba(30, 41, 59, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(16, 185, 129, 0.2);
@@ -89,6 +91,50 @@
 .nebula-nav-item:hover .nebula-nav-label,
 .nebula-nav-item.active .nebula-nav-label {
   color: #10b981;
+}
+
+/* Hamburger Menu */
+.nebula-hamburger {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 51;
+}
+
+.nebula-hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: #10b981;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.nebula-hamburger.active .nebula-hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.nebula-hamburger.active .nebula-hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.nebula-hamburger.active .nebula-hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Overlay */
+.nebula-mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 49;
 }
 
 /* Header Section */
@@ -541,34 +587,64 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nebula-nav-content {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
+  /* Show hamburger button on mobile */
+  .nebula-hamburger {
+    display: flex;
   }
 
   .nebula-nav-name {
     font-size: 1.1rem;
   }
 
+  /* Hide nav items by default on mobile */
   .nebula-nav-items {
-    gap: 0;
-    flex-wrap: wrap;
-    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 280px;
+    height: 100vh;
+    background: #1e293b;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    padding: 5rem 2rem 2rem;
+    transition: right 0.3s ease-in-out;
+    z-index: 50;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+    overflow-y: auto;
+  }
+
+  /* Show mobile menu when open */
+  .nebula-nav-items.mobile-open {
+    right: 0;
+  }
+
+  /* Show overlay when menu is open */
+  .nebula-mobile-overlay {
+    display: block;
   }
 
   .nebula-nav-item {
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
+    padding: 1rem;
+    font-size: 1.125rem;
+    text-align: center;
+    background: #334155;
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  .nebula-nav-item:hover,
+  .nebula-nav-item.active {
+    background: #475569;
   }
 
   .nebula-nav-bullet {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
   }
 
   .nebula-nav-label {
-    font-size: 0.85rem;
+    font-size: 1.125rem;
   }
 
   .nebula-main {

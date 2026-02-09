@@ -13,3 +13,9 @@
     padding: 0 var(--spacing-md);
   }
 }
+
+@media (max-width: 480px) {
+  .container-component {
+    padding: 0 1rem;
+  }
+}

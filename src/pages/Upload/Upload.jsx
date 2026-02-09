@@ -1,13 +1,14 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as pdfjsLib from 'pdfjs-dist';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import mammoth from 'mammoth';
 import Container from '../../components/Container/Container';
 import { parseResume } from '../../utils/api';
 import './Upload.css';
 
-// Configure PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+// Configure PDF.js worker (using local worker from node_modules)
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 function Upload() {
   const navigate = useNavigate();

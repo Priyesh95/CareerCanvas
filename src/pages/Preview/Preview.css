@@ -1,6 +1,9 @@
 .preview-page {
   min-height: 100vh;
   background: var(--white);
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 /* Loading State */
@@ -39,38 +42,78 @@
 .preview-template {
   background: var(--white);
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Floating Action Buttons */
 .preview-fab-group {
-  position: fixed;
-  bottom: var(--spacing-2xl);
-  right: var(--spacing-2xl);
-  display: flex;
+  position: fixed !important;
+  bottom: 3rem !important;
+  right: 3rem !important;
+  display: flex !important;
   flex-direction: column;
-  gap: var(--spacing-md);
-  z-index: 1000;
+  align-items: flex-end !important;
+  gap: 1rem !important;
+  z-index: 10000 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .preview-fab {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 1rem;
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  width: 56px !important;
+  min-width: 56px;
+  height: 56px !important;
+  font-size: 1rem !important;
   font-weight: 600;
   font-family: var(--font-body);
   border: none;
-  border-radius: var(--radius-full);
+  border-radius: 9999px !important;
   cursor: pointer;
-  transition: all var(--transition-base);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: width 0.3s ease, padding 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   white-space: nowrap;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  overflow: hidden;
+  position: relative;
 }
 
+/* Hide text by default on desktop */
+.preview-fab span {
+  opacity: 0;
+  max-width: 0;
+  transition: opacity 0.3s ease, max-width 0.3s ease, margin 0.3s ease;
+  overflow: hidden;
+  margin-right: 0;
+  display: inline-block;
+}
+
+/* Expand on hover - expands to the left */
 .preview-fab:hover {
+  width: 220px !important;
+  min-width: 220px;
+  padding: 1rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1rem !important;
+  justify-content: flex-start !important;
+  gap: 0.5rem !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.preview-fab:hover span {
+  opacity: 1;
+  max-width: 150px;
+  margin-right: 0.5rem;
 }
 
 .preview-fab:active {
@@ -79,35 +122,43 @@
 
 .preview-fab svg {
   flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
 .preview-fab-primary {
-  background: linear-gradient(135deg, var(--purple-500) 0%, var(--purple-600) 100%);
-  color: var(--white);
+  background: linear-gradient(135deg, var(--purple-500) 0%, var(--purple-600) 100%) !important;
+  color: var(--white) !important;
 }
 
 .preview-fab-primary:hover {
+  width: 165px !important;
+  min-width: 165px;
   background: linear-gradient(135deg, var(--purple-600) 0%, var(--purple-dark) 100%);
   box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
 .preview-fab-secondary {
-  background: var(--white);
-  color: var(--purple-600);
-  border: 2px solid var(--purple-500);
+  background: var(--white) !important;
+  color: var(--purple-600) !important;
+  border: 2px solid var(--purple-500) !important;
 }
 
 .preview-fab-secondary:hover {
+  width: 160px !important;
+  min-width: 160px;
   background: var(--purple-light);
   border-color: var(--purple-600);
 }
 
 .preview-fab-enhance {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: var(--white);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: var(--white) !important;
 }
 
 .preview-fab-enhance:hover {
+  width: 220px !important;
+  min-width: 220px;
   background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
 }
@@ -116,25 +167,83 @@
 @media (max-width: 768px) {
   /* Stack FABs vertically on mobile */
   .preview-fab-group {
-    bottom: var(--spacing-lg);
-    right: var(--spacing-lg);
-    gap: var(--spacing-sm);
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
+    gap: 0.75rem !important;
   }
 
+  /* Icon only on mobile - no expansion on hover */
   .preview-fab {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 0.875rem;
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    font-size: 0.875rem !important;
   }
 
   .preview-fab span {
-    display: none;
+    display: none !important;
+    opacity: 0 !important;
+    width: 0 !important;
   }
 
-  /* Show icon only on mobile */
+  /* Prevent expansion on hover for mobile */
+  .preview-fab:hover {
+    width: 56px !important;
+    padding: 0 !important;
+  }
+
+  .preview-fab:hover span {
+    display: none !important;
+    opacity: 0 !important;
+    width: 0 !important;
+  }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .preview-loading p {
+    font-size: 0.938rem;
+  }
+
+  .preview-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+
+  /* Further optimize FABs for very small screens */
+  .preview-fab-group {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    gap: 0.5rem !important;
+  }
+
   .preview-fab {
-    width: 56px;
-    height: 56px;
-    justify-content: center;
-    padding: 0;
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) !important;
+    padding: 0 !important;
+  }
+
+  .preview-fab:hover {
+    width: 48px !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .preview-fab:hover span {
+    display: none !important;
+    opacity: 0 !important;
+    width: 0 !important;
+  }
+
+  .preview-fab svg {
+    width: 18px !important;
+    height: 18px !important;
   }
 }

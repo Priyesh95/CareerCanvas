@@ -3,6 +3,7 @@ import './Aurora.css'
 
 function Aurora({ data }) {
   const [activeSection, setActiveSection] = useState('about')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -144,14 +145,31 @@ function Aurora({ data }) {
       <nav className="aurora-nav">
         <div className="aurora-nav-content">
           <span className="aurora-nav-name">{portfolioData.name}</span>
-          <div className="aurora-nav-links">
-            <a href="#about" className={`aurora-nav-link ${activeSection === 'about' ? 'active' : ''}`}>About</a>
-            <a href="#skills" className={`aurora-nav-link ${activeSection === 'skills' ? 'active' : ''}`}>Skills</a>
-            <a href="#experience" className={`aurora-nav-link ${activeSection === 'experience' ? 'active' : ''}`}>Experience</a>
-            <a href="#projects" className={`aurora-nav-link ${activeSection === 'projects' ? 'active' : ''}`}>Projects</a>
-            <a href="#education" className={`aurora-nav-link ${activeSection === 'education' ? 'active' : ''}`}>Education</a>
+
+          {/* Hamburger Button */}
+          <button
+            className={`aurora-hamburger ${mobileMenuOpen ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="aurora-hamburger-line"></span>
+            <span className="aurora-hamburger-line"></span>
+            <span className="aurora-hamburger-line"></span>
+          </button>
+
+          <div className={`aurora-nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            <a href="#about" className={`aurora-nav-link ${activeSection === 'about' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="#skills" className={`aurora-nav-link ${activeSection === 'skills' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Skills</a>
+            <a href="#experience" className={`aurora-nav-link ${activeSection === 'experience' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Experience</a>
+            <a href="#projects" className={`aurora-nav-link ${activeSection === 'projects' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Projects</a>
+            <a href="#education" className={`aurora-nav-link ${activeSection === 'education' ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Education</a>
           </div>
         </div>
+
+        {/* Mobile Overlay */}
+        {mobileMenuOpen && (
+          <div className="aurora-mobile-overlay" onClick={() => setMobileMenuOpen(false)}></div>
+        )}
       </nav>
 
       {/* Header Section */}

@@ -43,40 +43,6 @@
   border-radius: var(--radius-full);
 }
 
-.nav {
-  display: flex;
-  gap: var(--spacing-lg);
-  align-items: center;
-}
-
-.nav-link {
-  font-weight: 500;
-  color: var(--gray-700);
-  transition: color var(--transition-fast);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-md);
-}
-
-.nav-link:hover {
-  color: var(--purple-500);
-}
-
-.nav-link-cta {
-  background: linear-gradient(135deg, var(--purple-500) 0%, var(--purple-600) 100%);
-  color: var(--white);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: all var(--transition-fast);
-}
-
-.nav-link-cta:hover {
-  background: linear-gradient(135deg, var(--purple-600) 0%, var(--purple-dark) 100%);
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-purple);
-}
-
 /* Template Navigation */
 .template-nav {
   display: flex;
@@ -121,32 +87,150 @@
   box-shadow: var(--shadow-purple);
 }
 
+/* Hamburger Menu Button */
+.hamburger {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 2001; /* High z-index to appear above template navs */
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--gray-700);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+  background: var(--purple-600);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background: var(--purple-600);
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1999; /* High z-index to appear above template navs */
+}
+
 @media (max-width: 768px) {
   .header-content {
-    flex-direction: column;
-    gap: var(--spacing-md);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .nav {
-    gap: var(--spacing-md);
+  /* Show hamburger button on mobile */
+  .hamburger {
+    display: flex;
   }
 
+  /* Hide template navigation by default on mobile */
   .template-nav {
+    position: fixed;
+    top: 0;
+    right: -320px; /* Use explicit pixel value to ensure it's off-screen */
+    width: 280px;
+    height: 100vh;
+    background: var(--white);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    padding: 5rem 2rem 2rem;
+    transition: right 0.3s ease-in-out;
+    z-index: 2000; /* High z-index to appear above template navs */
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-lg);
+    align-items: stretch;
+    overflow-y: auto; /* Allow scrolling if content is too long */
   }
 
-  .template-tabs {
-    width: 100%;
+  /* Show mobile menu when open */
+  .template-nav.mobile-open {
+    right: 0;
   }
 
-  .template-tab {
-    flex: 1;
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 0.875rem;
+  /* Show overlay when menu is open */
+  .mobile-overlay {
+    display: block;
   }
 
   .nav-label {
-    font-size: 0.85rem;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--gray-700);
+  }
+
+  .template-tabs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-sm);
+  }
+
+  .template-tab {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .header {
+    padding: 0.75rem 0;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .logo-accent::after {
+    height: 2px;
+    bottom: -3px;
+  }
+
+  /* Reduce mobile menu width on very small screens */
+  .template-nav {
+    width: 85%;
+    max-width: 280px;
+    right: -100vw; /* Move completely off-screen on small devices */
+    padding: 4rem 1.5rem 1.5rem;
+  }
+
+  /* Ensure menu slides in from right when open */
+  .template-nav.mobile-open {
+    right: 0;
+  }
+
+  .hamburger-line {
+    width: 22px;
+  }
+
+  .nav-label {
+    font-size: 0.938rem;
+  }
+
+  .template-tab {
+    padding: 0.875rem;
+    font-size: 0.938rem;
   }
 }

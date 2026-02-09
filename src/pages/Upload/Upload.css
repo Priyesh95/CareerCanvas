@@ -316,8 +316,17 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .upload-page {
+    padding: 3rem 0;
+  }
+
   .upload-content h1 {
     font-size: 2rem;
+  }
+
+  .upload-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 
   .upload-dropzone {
@@ -328,15 +337,96 @@
     font-size: 3rem;
   }
 
+  .upload-primary-text {
+    font-size: 1.125rem;
+  }
+
+  .upload-secondary-text {
+    font-size: 0.938rem;
+  }
+
   .text-input-actions {
     flex-direction: column;
   }
 
-  .text-input-actions .btn {
+  .text-input-actions .btn,
+  .text-input-actions .upload-btn {
     width: 100%;
   }
 
   .upload-tips {
     padding: 1.5rem;
+  }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .upload-page {
+    padding: 2rem 0;
+  }
+
+  .upload-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .upload-subtitle {
+    font-size: 0.938rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .upload-dropzone {
+    padding: 2.5rem 1rem;
+  }
+
+  .upload-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .upload-primary-text {
+    font-size: 1rem;
+  }
+
+  .upload-secondary-text {
+    font-size: 0.875rem;
+  }
+
+  .upload-supported {
+    font-size: 0.813rem;
+  }
+
+  .upload-text-input {
+    padding: 1.5rem;
+  }
+
+  .resume-textarea {
+    font-size: 0.875rem;
+    padding: 0.875rem;
+  }
+
+  .upload-btn {
+    padding: 0.688rem 1.5rem;
+    font-size: 0.938rem;
+  }
+
+  .upload-tips {
+    padding: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .upload-tips h3 {
+    font-size: 1rem;
+  }
+
+  .upload-tips li {
+    font-size: 0.875rem;
+    padding: 0.625rem 0;
+  }
+
+  .upload-error {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.875rem;
+    flex-direction: column;
+    text-align: center;
   }
 }

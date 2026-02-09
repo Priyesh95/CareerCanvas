@@ -99,3 +99,21 @@
   background: #dc2626;
   transform: translateY(-2px);
 }
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .btn-sm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.813rem;
+  }
+
+  .btn-md {
+    padding: 0.625rem 1rem;
+    font-size: 0.938rem;
+  }
+
+  .btn-lg {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
