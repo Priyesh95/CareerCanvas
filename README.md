@@ -1,4 +1,4 @@
-https://career-canvas-pn.netlify.app/preview
+https://career-canvas-pn.netlify.app
 
 # CareerCanvas
 
