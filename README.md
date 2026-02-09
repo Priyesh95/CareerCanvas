@@ -1,3 +1,5 @@
+https://career-canvas-pn.netlify.app/preview
+
 # CareerCanvas
 
 Transform your resume into a stunning portfolio website in minutes using AI-powered technology.
