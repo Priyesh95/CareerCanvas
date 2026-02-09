@@ -2,7 +2,7 @@
 
 [build]
   # Build command
-  command = "npm run build"
+  command = "npm ci && npm run build"
 
   # Directory with the static files
   publish = "dist"
@@ -10,6 +10,7 @@
   # Node version
   [build.environment]
     NODE_VERSION = "20"
+    NPM_CONFIG_PRODUCTION = "false"
 
 # Redirect all requests to index.html for client-side routing
 [[redirects]]
