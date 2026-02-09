@@ -1,7 +1,6 @@
 .preview-page {
   min-height: 100vh;
   background: var(--white);
-  overflow-x: hidden;
   width: 100%;
   position: relative;
 }
@@ -42,7 +41,6 @@
 .preview-template {
   background: var(--white);
   min-height: 100vh;
-  overflow-x: hidden;
   width: 100%;
 }
 
